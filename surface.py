@@ -1,0 +1,2 @@
+class Surface:
+    pass
