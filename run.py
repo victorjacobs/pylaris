@@ -7,9 +7,12 @@ from light import *
 import itertools
 from PIL import Image, ImageDraw
 from lambertianMaterial import LambertianMaterial
+import time
 
 
-im = Image.new('RGBA', (Settings.screenX, Settings.screenY), (128, 128 ,128 ,0))
+start_time = time.time()
+
+im = Image.new('RGBA', (Settings.screenX, Settings.screenY), (128, 128, 128, 0))
 ctx = ImageDraw.Draw(im)
 
 camera = Camera(Vector(0, 0, 0), Vector(1, 0, 0), Vector(0, 0, 1))
@@ -28,3 +31,5 @@ for (x, y) in itertools.product(range(0, Settings.screenX), range(0, Settings.sc
             ctx.point([(pixel.x, pixel.y)], hit.color(scene))
 
 im.show()
+
+print("--- %s seconds ---" % (time.time() - start_time))
