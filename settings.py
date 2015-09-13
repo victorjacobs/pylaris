@@ -1,3 +1,3 @@
 class Settings:
-    screenX = 200
-    screenY = 200
+    screenX = 500
+    screenY = 500

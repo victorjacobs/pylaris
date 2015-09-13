@@ -1,11 +1,11 @@
 from surface import Surface
+from hit import Hit
 import math
-import vector
 
 
 class Sphere(Surface):
-    def __init__(self, center, radius):
-        super().__init__()
+    def __init__(self, center, radius, material):
+        self.material = material
         self.center = center
         self.radius = radius
 
@@ -29,4 +29,11 @@ class Sphere(Surface):
         else:
             return None
 
-        return t
+        where = ray.origin.add(ray.direction.mult(t))
+
+        normal = where.sub(self.center).normalized()
+
+        return Hit(ray, self, where, normal)
+
+    def colorFor(self, hit, scene):
+        return self.material.colorFor(hit, scene)
