@@ -6,8 +6,8 @@ import numpy as np
 class Vector(namedtuple('Vector', 'x y z')):
 
     def dot(self, other):
-        # return self[0] * other[0] + self[1] * other[1] + self[2] * other[2]
-        return np.dot(self.asArray(), other.asArray())
+        return self[0] * other[0] + self[1] * other[1] + self[2] * other[2]
+        # return np.dot(self.asArray(), other.asArray())
 
     def norm(self):
         return math.sqrt(math.pow(self[0], 2) + math.pow(self[1], 2) + math.pow(self[2], 2))
